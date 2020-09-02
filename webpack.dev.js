@@ -1,12 +1,13 @@
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin;
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+/* eslint-disable prefer-destructuring */
+// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+// .BundleAnalyzerPlugin;
 
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { SourceMapDevToolPlugin } = require("webpack");
+const webpack = require("webpack");
 const { merge } = require("webpack-merge");
-const path = require("path");
 
 const shared = require("./webpack.common");
-const webpack = require("webpack");
 
 module.exports = merge(shared, {
   mode: "development",
@@ -35,6 +36,9 @@ module.exports = merge(shared, {
     new webpack.NoEmitOnErrorsPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].css",
+    }),
+    new SourceMapDevToolPlugin({
+      filename: "[file].map",
     }),
     // new BundleAnalyzerPlugin(),
   ],

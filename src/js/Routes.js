@@ -8,7 +8,7 @@ import HomeContainer from "./containers/HomeContainer";
 export default function Routes() {
   return (
     <Switch>
-      <Route path="/" exact={true} component={HomeContainer} />
+      <Route path="/" exact component={HomeContainer} />
     </Switch>
   );
 }
